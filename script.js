@@ -10,16 +10,7 @@ function Book(name, author, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary() {
-    let newBook = createBook();
-    myLibrary.push(newBook);
-    console.log(newBook);
-}
-
-function createBook() {
-    let name = prompt("Book name");
-    let author = prompt("Author");
-    let pages = prompt("Amount of pages");
-    let read = false;
-    return new Book(name, author, pages, read);
+function addBookToLibrary(name = "name", author = "author", pages = 50, read = false) {
+    let newBook = new Book(name, author, pages, read);
+    return myLibrary.push(newBook);
 }
