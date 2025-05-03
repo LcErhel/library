@@ -25,12 +25,14 @@ function refresh() {
     myLibrary.forEach(book => {
         let newItem = document.createElement("div");
         newItem.classList.add("book");
-        newItem.textContent = `${book.name}, ${book.author}, ${book.pages}, ${book.read} `;
+        newItem.textContent = `${book.name}, ${book.author}, ${book.pages}, ${book.read},`;
+        newItem.setAttribute("id", book.id);
     
         let deleteBtn = document.createElement("div");
         deleteBtn.classList.add("btn");
         deleteBtn.textContent = "delete";
         deleteBtn.addEventListener("click", () => {
+            removeById(deleteBtn.parentElement.id);
             deleteBtn.parentElement.remove();
         });
         newItem.appendChild(deleteBtn);
@@ -55,6 +57,14 @@ function addNewBook(event) {
 
 function resetInputs() {
     document.getElementById("form").reset();
+}
+
+function removeById(id) {
+    myLibrary.forEach(function(item, index, object) {
+        if(item.id == id) {
+            object.splice(index, 1);
+        }
+    });
 }
 
 refresh();
