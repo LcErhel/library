@@ -35,7 +35,21 @@ function refresh() {
             removeById(deleteBtn.parentElement.id);
             deleteBtn.parentElement.remove();
         });
+        
         newItem.appendChild(deleteBtn);
+
+        newItem.addEventListener("click", () => {
+            if(book.read == true) {
+                book.read = false;
+            } else if (book.read == false) {
+                book.read = true;
+            }
+
+            console.log(newItem.id);
+
+            newItem.textContent = `${book.name}, ${book.author}, ${book.pages}, ${book.read},`
+            newItem.appendChild(deleteBtn);
+        })
     
         display.appendChild(newItem);
     });
