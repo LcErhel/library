@@ -3,3 +3,33 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.container {
+    display: flex;
+    gap: 2rem;
+}
+
+.side {
+    flex: 1;
+}
+
+.display {
+    flex: 2;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.addNewBookBtn {
+    background-color: rgb(207, 240, 229);
+    border-radius: 0.2rem;
+    padding: 1rem;
+}
+
+.btn {
+    display: inline;
+    color: red;
+}

@@ -21,10 +21,11 @@ addBookToLibrary("namae", "jjr martin", "1654", true);
 const display = document.querySelector(".display");
 
 function refresh() {
+    display.replaceChildren();
     myLibrary.forEach(book => {
         let newItem = document.createElement("div");
         newItem.classList.add("book");
-        newItem.textContent = `${book.name}, ${book.author}, ${book.pages}, ${book.read}`;
+        newItem.textContent = `${book.name}, ${book.author}, ${book.pages}, ${book.read} `;
     
         let deleteBtn = document.createElement("div");
         deleteBtn.classList.add("btn");
@@ -36,6 +37,19 @@ function refresh() {
     
         display.appendChild(newItem);
     });
+}
+
+const addNewBookBtn = document.querySelector(".addNewBookBtn")
+addNewBookBtn.addEventListener("click", addNewBook);
+
+function addNewBook(event) {
+    event.preventDefault();
+    let name = document.getElementById("name").value;
+    let author = document.getElementById("author").value;
+    let pages = document.getElementById("pages").value;
+    let read = document.getElementById("read").checked ? true : false;
+    addBookToLibrary(name, author, pages, read);
+    refresh();
 }
 
 refresh();
