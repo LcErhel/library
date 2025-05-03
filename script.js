@@ -49,7 +49,12 @@ function addNewBook(event) {
     let pages = document.getElementById("pages").value;
     let read = document.getElementById("read").checked ? true : false;
     addBookToLibrary(name, author, pages, read);
+    resetInputs();
     refresh();
+}
+
+function resetInputs() {
+    document.getElementById("form").reset();
 }
 
 refresh();
