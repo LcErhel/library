@@ -25,7 +25,7 @@ function refresh() {
     myLibrary.forEach(book => {
         let newItem = document.createElement("div");
         newItem.classList.add("book");
-        newItem.textContent = `${book.name}, ${book.author}, ${book.pages}, ${book.read},`;
+        newItem.textContent = `${book.name}, ${book.author}, ${book.pages}, ${book.read}, `;
         newItem.setAttribute("id", book.id);
     
         let deleteBtn = document.createElement("div");
@@ -38,16 +38,10 @@ function refresh() {
         
         newItem.appendChild(deleteBtn);
 
-        newItem.addEventListener("click", () => {
-            if(book.read == true) {
-                book.read = false;
-            } else if (book.read == false) {
-                book.read = true;
-            }
+        newItem.addEventListener("click", () => {    
+            toggleRead(newItem.id);
 
-            console.log(newItem.id);
-
-            newItem.textContent = `${book.name}, ${book.author}, ${book.pages}, ${book.read},`
+            newItem.textContent = `${book.name}, ${book.author}, ${book.pages}, ${book.read}, `
             newItem.appendChild(deleteBtn);
         })
     
@@ -77,6 +71,14 @@ function removeById(id) {
     myLibrary.forEach(function(item, index, object) {
         if(item.id == id) {
             object.splice(index, 1);
+        }
+    });
+}
+
+function toggleRead(id) {
+    myLibrary.forEach(book => {
+        if(book.id == id) {
+            book.read = !book.read;
         }
     });
 }
