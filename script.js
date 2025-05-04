@@ -16,7 +16,7 @@ function addBookToLibrary(name = "name", author = "author", pages = 50, read = f
 }
 
 addBookToLibrary();
-addBookToLibrary("namae", "jjr martin", "1654", true);
+addBookToLibrary("some book", "some writer", 1634, true);
 
 const display = document.querySelector(".display");
 
@@ -25,7 +25,7 @@ function refresh() {
     myLibrary.forEach(book => {
         let newItem = document.createElement("div");
         newItem.classList.add("book");
-        newItem.textContent = `${book.name}, ${book.author}, ${book.pages}, ${book.read}, `;
+        newItem.textContent = `${book.name}, ${book.author}, ${book.pages} pages, ${book.read}, `;
         newItem.setAttribute("id", book.id);
     
         let deleteBtn = document.createElement("div");
@@ -41,7 +41,7 @@ function refresh() {
         newItem.addEventListener("click", () => {    
             toggleRead(newItem.id);
 
-            newItem.textContent = `${book.name}, ${book.author}, ${book.pages}, ${book.read}, `
+            newItem.textContent = `${book.name}, ${book.author}, ${book.pages} pages, ${book.read}, `
             newItem.appendChild(deleteBtn);
         })
     
